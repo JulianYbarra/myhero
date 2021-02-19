@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MyHero</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
+    <string name="toolbar_title">Marvel Challenge</string>
 
     <string name="facebook_application_id" translatable="false">243718394068025</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb243718394068025</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
