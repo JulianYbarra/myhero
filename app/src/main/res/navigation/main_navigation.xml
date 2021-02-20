@@ -10,4 +10,23 @@
         android:name="com.junka.myhero.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.junka.myhero.character.CharacterFragment"
+        android:label="fragment_hero"
+        tools:layout="@layout/fragment_hero" />
+
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.junka.myhero.character.detail.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        tools:layout="@layout/fragment_character_detail" >
+        <argument
+            android:name="character"
+            app:argType="com.junka.myhero.character.model.CharacterData" />
+    </fragment>
+
+
 </navigation>

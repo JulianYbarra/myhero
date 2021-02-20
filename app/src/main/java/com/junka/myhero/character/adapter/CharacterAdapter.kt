@@ -41,6 +41,7 @@ class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit
                 crossfade(true)
                 scale(Scale.FILL)
             }
+
         }
     }
 }

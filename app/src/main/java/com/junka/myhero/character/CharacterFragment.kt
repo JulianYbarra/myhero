@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.junka.myhero.R
 import com.junka.myhero.RetrofitInstance
@@ -15,8 +16,12 @@ class CharacterFragment : Fragment(R.layout.fragment_hero) {
     lateinit var viewModel: CharacterViewModel
 
     var recyclerView : RecyclerView? = null
-    val characterAdapter = CharacterAdapter(){
 
+    private val characterAdapter = CharacterAdapter(){
+        val bundle = Bundle().apply {
+            putParcelable("character",it)
+        }
+        findNavController().navigate(R.id.characterDetailFragment,bundle)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
