@@ -6,24 +6,22 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.junka.myhero.R
-import com.junka.myhero.RetrofitInstance
 import com.junka.myhero.event.adapter.EventAdapter
-import com.junka.myhero.event.repository.EventRepository
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventFragment : Fragment(R.layout.fragment_event) {
 
-    lateinit var viewModel : EventViewModel
+    val viewModel: EventViewModel by viewModel()
 
     private val eventAdapter = EventAdapter()
 
-    var recyclerView : RecyclerView? = null
+    var recyclerView: RecyclerView? = null
     lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = EventViewModel(EventRepository(RetrofitInstance.eventService))
 
-        viewModel.eventList.observe(this){
+        viewModel.eventList.observe(this) {
             eventAdapter.data = it
         }
     }
@@ -44,7 +42,7 @@ class EventFragment : Fragment(R.layout.fragment_event) {
         }
     }
 
-    companion object{
+    companion object {
         fun newInstance() = EventFragment()
     }
 }
