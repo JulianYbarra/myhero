@@ -5,8 +5,8 @@ import androidx.lifecycle.asLiveData
 import com.junka.myhero.character.repository.CharacterRepository
 
 class CharacterViewModel(
-    private val repository: CharacterRepository
+    private val characterRepository: CharacterRepository
 ) : ViewModel(){
 
-    val characterList = repository.getCharacter().asLiveData()
+    val characterList = characterRepository.getCharacter().asLiveData()
 }

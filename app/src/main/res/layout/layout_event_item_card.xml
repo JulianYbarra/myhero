@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="true"
+
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_2"
+                android:layout_marginBottom="@dimen/grid_2"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="@dimen/grid_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="@dimen/grid_2"
+                android:layout_marginEnd="@dimen/grid_2"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Civil War" />
+
+            <TextView
+                android:id="@+id/startDateTextView"
+                android:layout_width="@dimen/grid_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/titleTextView"
+                app:layout_constraintStart_toStartOf="@id/titleTextView"
+                app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+            <TextView
+                android:id="@+id/endDateTextView"
+                android:layout_width="@dimen/grid_0"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grid_2"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/startDateTextView"
+                app:layout_constraintStart_toStartOf="@id/startDateTextView"
+                app:layout_constraintTop_toBottomOf="@id/startDateTextView"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/arrowImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_3"
+                android:src="@drawable/ic_keyboard_arrow_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTextView"
+                app:tint="@color/black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/comicsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:visibility="gone"
+            android:text="@string/comic_to_discuss"
+            app:layout_constraintTop_toBottomOf="@id/cardContent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comicsTextView"
+            tools:listitem="@layout/layout_comic_item_card" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

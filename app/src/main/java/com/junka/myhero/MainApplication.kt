@@ -2,6 +2,7 @@ package com.junka.myhero
 
 import android.app.Application
 import com.junka.myhero.character.service.CharacterService
+import com.junka.myhero.event.service.EventService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,4 +25,6 @@ object RetrofitInstance {
         .build()
 
     val characterService : CharacterService = retrofit.create(CharacterService::class.java)
+
+    val eventService : EventService = retrofit.create(EventService::class.java)
 }

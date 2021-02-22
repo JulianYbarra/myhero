@@ -11,4 +11,5 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="comic_in_which_it_appears">COMICS EN LOS QUE APARECE</string>
+    <string name="comic_to_discuss">comics a discutir</string>
 </resources>

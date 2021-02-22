@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.junka.myhero.character.CharacterFragment
+import com.junka.myhero.event.EventFragment
 
 class HomeViewPagerAdapter(fragmentManager: FragmentManager
 
@@ -20,7 +21,7 @@ class HomeViewPagerAdapter(fragmentManager: FragmentManager
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> CharacterFragment.newInstance()
-            else -> CharacterFragment.newInstance()
+            else -> EventFragment.newInstance()
         }
     }
 
