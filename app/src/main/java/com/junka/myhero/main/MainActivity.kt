@@ -16,6 +16,7 @@ const val RC_SIGN_IN = 1500
 class MainActivity : AppCompatActivity() {
 
     private lateinit var hostFragment: NavHostFragment
+    private var user = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         setUpNavigation()
 
-        //tryLogin()
+        if(user == null){
+            tryLogin()
+        }
+
     }
 
     private fun setUpNavigation() {
