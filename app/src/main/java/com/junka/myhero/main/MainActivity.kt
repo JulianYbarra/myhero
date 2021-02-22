@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.ic_launcher_foreground) // Set logo drawable
+                .setLogo(R.drawable.ic_superhero) // Set logo drawable
                 .setTheme(R.style.Theme_MyHero) // Set theme
                 .build(),
             RC_SIGN_IN

@@ -9,20 +9,18 @@ import com.junka.myhero.character.CharacterFragment
 import com.junka.myhero.event.EventFragment
 
 class HomeViewPagerAdapter(fragmentManager: FragmentManager
-
 ) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private var registeredFragments = SparseArray<Fragment>()
 
+    private val fragmentList = listOf(CharacterFragment.newInstance(),EventFragment.newInstance())
+
     override fun getCount(): Int {
-        return 2
+        return fragmentList.size
     }
 
     override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> CharacterFragment.newInstance()
-            else -> EventFragment.newInstance()
-        }
+        return fragmentList[position]
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {

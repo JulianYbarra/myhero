@@ -10,6 +10,8 @@
     <string name="private_key">aa1141953df8c088f39a97de10008578e834580f</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="comic_in_which_it_appears">COMICS EN LOS QUE APARECE</string>
+    <string name="comic_in_which_it_appears">comics en los que aparece</string>
     <string name="comic_to_discuss">comics a discutir</string>
+    <string name="characters">Personajes</string>
+    <string name="events">Eventos</string>
 </resources>

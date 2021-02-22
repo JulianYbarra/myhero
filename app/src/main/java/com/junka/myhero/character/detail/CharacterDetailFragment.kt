@@ -23,10 +23,13 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
 
         character?.let {
             view.findViewById<Toolbar>(R.id.toolbar).apply {
-                title = it.name
                 setNavigationOnClickListener {
                     findNavController().popBackStack()
                 }
+            }
+
+            view.findViewById<TextView>(R.id.toolbarTitle).apply {
+                text = it.name
             }
 
             val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}"

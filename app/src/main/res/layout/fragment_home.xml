@@ -15,13 +15,20 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="@string/toolbar_title"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Title"
-            app:titleTextColor="@color/white"
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/toolbar_title"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textAppearance="@style/Theme.MyHero.Toolbar"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
@@ -39,6 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:tabIndicatorHeight="0dp"
             app:tabGravity="fill"
             app:tabMode="fixed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
