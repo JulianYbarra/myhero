@@ -38,7 +38,6 @@ class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit
 
             view.findViewById<ImageView>(R.id.imageView).load(imagePath){
                 crossfade(true)
-                scale(Scale.FILL)
             }
 
         }

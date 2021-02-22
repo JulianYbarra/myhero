@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.junka.myhero.R
 import com.junka.myhero.RetrofitInstance
@@ -16,6 +17,7 @@ class CharacterFragment : Fragment(R.layout.fragment_hero) {
     lateinit var viewModel: CharacterViewModel
 
     var recyclerView : RecyclerView? = null
+    lateinit var layoutManager: LinearLayoutManager
 
     private val characterAdapter = CharacterAdapter(){
         val bundle = Bundle().apply {
@@ -38,9 +40,16 @@ class CharacterFragment : Fragment(R.layout.fragment_hero) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        layoutManager = LinearLayoutManager(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView?.let {
             it.adapter = characterAdapter
+            it.layoutManager = layoutManager
+            it.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    viewModel.lastVisible.value = layoutManager.findLastVisibleItemPosition()
+                }
+            })
         }
     }
 

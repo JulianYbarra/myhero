@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface EventService {
 
     @GET("/v1/public/events")
-    suspend fun getEvents(@Query("apikey") apikey: String, @Query("hash") hash: String, @Query("ts") ts: String,@Query("orderBy") orderBy : String = "startDate") : EventResponseData
+    suspend fun getEvents(@Query("apikey") apikey: String, @Query("hash") hash: String, @Query("ts") ts: String,@Query("limit") limit : Int,@Query("offset") offset : Int,@Query("orderBy") orderBy : String = "startDate") : EventResponseData
 }
