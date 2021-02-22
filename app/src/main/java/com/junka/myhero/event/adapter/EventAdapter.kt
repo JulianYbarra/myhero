@@ -15,8 +15,7 @@ import com.junka.myhero.event.model.EventData
 import kotlin.properties.Delegates
 
 class EventAdapter(
-    private val eventList : List<EventData> = emptyList(),
-    private val onEventClickListener: OnEventClickListener
+    private val eventList : List<EventData> = emptyList()
 ) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
     var data: List<EventData> by Delegates.observable(eventList) { _, _, _ ->
@@ -37,8 +36,7 @@ class EventAdapter(
 
         fun bind(event : EventData){
 
-            //TODO buscar solucion de http
-            val imagePath = "${event.thumbnail.path}.${event.thumbnail.extension}".replace("http","https")
+            val imagePath = "${event.thumbnail.path}.${event.thumbnail.extension}"
             imageView.load(imagePath)
 
             titleTextView.text = event.title
@@ -84,8 +82,4 @@ class EventAdapter(
     }
 
     override fun getItemCount(): Int = data.size
-}
-
-interface OnEventClickListener{
-    fun onEventClick()
 }

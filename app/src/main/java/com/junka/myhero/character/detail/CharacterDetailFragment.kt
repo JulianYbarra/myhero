@@ -29,8 +29,7 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
                 }
             }
 
-            //TODO buscar solucion de http
-            val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}".replace("http", "https")
+            val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}"
             view.findViewById<ImageView>(R.id.imageView).load(imagePath){
                 crossfade(true)
             }

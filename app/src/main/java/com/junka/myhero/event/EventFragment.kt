@@ -7,20 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.junka.myhero.R
 import com.junka.myhero.RetrofitInstance
 import com.junka.myhero.event.adapter.EventAdapter
-import com.junka.myhero.event.adapter.OnEventClickListener
 import com.junka.myhero.event.repository.EventRepository
 
 class EventFragment : Fragment(R.layout.fragment_event) {
 
     lateinit var viewModel : EventViewModel
 
-    private val onEventClickListener = object : OnEventClickListener{
-        override fun onEventClick() {
-
-        }
-    }
-
-    private val eventAdapter = EventAdapter(onEventClickListener = onEventClickListener)
+    private val eventAdapter = EventAdapter()
 
     var recyclerView : RecyclerView? = null
 

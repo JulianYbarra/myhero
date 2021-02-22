@@ -34,8 +34,7 @@ class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit
             view.findViewById<TextView>(R.id.nameTextView)?.text = item.name
             view.findViewById<TextView>(R.id.descriptionTextView).text = item.description
 
-            //TODO buscar solucion de http
-            val imagePath = "${item.thumbnail.path}.${item.thumbnail.extension}".replace("http","https")
+            val imagePath = "${item.thumbnail.path}.${item.thumbnail.extension}"
 
             view.findViewById<ImageView>(R.id.imageView).load(imagePath){
                 crossfade(true)
