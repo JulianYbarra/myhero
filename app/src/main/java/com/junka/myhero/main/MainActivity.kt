@@ -10,6 +10,7 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.junka.myhero.R
+import com.junka.myhero.databinding.ActivityMainBinding
 
 const val RC_SIGN_IN = 1500
 
@@ -18,9 +19,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var hostFragment: NavHostFragment
     private var user = FirebaseAuth.getInstance().currentUser
 
+    var binding : ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding?.root)
 
         setUpNavigation()
 

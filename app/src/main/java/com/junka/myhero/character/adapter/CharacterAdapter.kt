@@ -12,12 +12,14 @@ import coil.load
 import coil.size.Scale
 import com.junka.myhero.R
 import com.junka.myhero.character.model.CharacterData
+import com.junka.myhero.databinding.LayoutCharacterItemCardBinding
 
 class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit) : ListAdapter<CharacterData, CharacterAdapter.ItemViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_character_item_card, parent, false)
-        return ItemViewHolder(view)
+        val binding = LayoutCharacterItemCardBinding.bind(view)
+        return ItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) = with(holder) {
@@ -28,15 +30,14 @@ class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit
         }
     }
 
-    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class ItemViewHolder(private val binding: LayoutCharacterItemCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: CharacterData) = with(view) {
-            view.findViewById<TextView>(R.id.nameTextView)?.text = item.name
-            view.findViewById<TextView>(R.id.descriptionTextView).text = item.description
+        fun bind(item: CharacterData) = with(binding) {
+            nameTextView.text = item.name
+            descriptionTextView.text = item.description
 
             val imagePath = "${item.thumbnail.path}.${item.thumbnail.extension}"
-
-            view.findViewById<ImageView>(R.id.imageView).load(imagePath){
+            imageView.load(imagePath){
                 crossfade(true)
             }
 

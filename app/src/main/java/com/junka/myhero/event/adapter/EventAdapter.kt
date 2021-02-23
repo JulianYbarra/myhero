@@ -11,6 +11,7 @@ import com.junka.myhero.R
 import com.junka.myhero.character.adapter.ComicsAdapter
 import com.junka.myhero.common.showOrHide
 import com.junka.myhero.common.toDateFormat
+import com.junka.myhero.databinding.LayoutEventItemCardBinding
 import com.junka.myhero.event.model.EventData
 import kotlin.properties.Delegates
 
@@ -24,17 +25,10 @@ class EventAdapter(
 
     private val expandedList : MutableList<Int> = mutableListOf()
 
-    class ViewHolder(private val view : View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(private val binding : LayoutEventItemCardBinding) : RecyclerView.ViewHolder(binding.root){
 
-        private val imageView = view.findViewById<ImageView>(R.id.imageView)
-        private val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
-        private val startDateTextView = view.findViewById<TextView>(R.id.startDateTextView)
-        private val endDateTextView = view.findViewById<TextView>(R.id.endDateTextView)
-        private val arrowImageView = view.findViewById<ImageView>(R.id.arrowImageView)
-        private val comicTitle = view.findViewById<TextView>(R.id.comicsTextView)
-        private val comicRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        fun bind(event : EventData){
+        fun bind(event : EventData) = with(binding){
 
             val imagePath = "${event.thumbnail.path}.${event.thumbnail.extension}"
             imageView.load(imagePath)
@@ -43,19 +37,20 @@ class EventAdapter(
             startDateTextView.text = event.start.toDateFormat()
             endDateTextView.text = event.end.toDateFormat()
 
-            comicRecyclerView.adapter = ComicsAdapter(event.comics.items)
+            recyclerView.adapter = ComicsAdapter(event.comics.items)
         }
 
-        fun showOrHideComics(showOrHide : Boolean){
-            comicTitle.showOrHide(showOrHide)
-            comicRecyclerView.showOrHide(showOrHide)
+        fun showOrHideComics(showOrHide : Boolean) = with(binding){
+            comicsTextView.showOrHide(showOrHide)
+            recyclerView.showOrHide(showOrHide)
             arrowImageView.setImageResource(if(showOrHide) R.drawable.ic_keyboard_arrow_up else R.drawable.ic_keyboard_arrow_down)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_event_item_card, parent, false)
-        return ViewHolder(view)
+        val binding = LayoutEventItemCardBinding.bind(view)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

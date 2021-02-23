@@ -1,7 +1,9 @@
 package com.junka.myhero.character.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -13,40 +15,54 @@ import coil.size.Scale
 import com.junka.myhero.R
 import com.junka.myhero.character.adapter.ComicsAdapter
 import com.junka.myhero.character.model.CharacterData
+import com.junka.myhero.databinding.FragmentCharacterDetailBinding
 
 class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
 
     val character: CharacterData? by lazy { arguments?.getParcelable("character") }
 
+    private var binding: FragmentCharacterDetailBinding? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentCharacterDetailBinding.inflate(inflater,container,false)
+        return binding?.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         character?.let {
-            view.findViewById<Toolbar>(R.id.toolbar).apply {
-                setNavigationOnClickListener {
-                    findNavController().popBackStack()
+            binding?.let {  binding ->
+                binding.toolbar.apply {
+                    setNavigationOnClickListener {
+                        findNavController().popBackStack()
+                    }
                 }
-            }
 
-            view.findViewById<TextView>(R.id.toolbarTitle).apply {
-                text = it.name
-            }
+                binding.toolbarTitle.apply {
+                    text = it.name
+                }
 
-            val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}"
-            view.findViewById<ImageView>(R.id.imageView).load(imagePath){
-                crossfade(true)
-            }
+                val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}"
+                binding.imageView.load(imagePath){
+                    crossfade(true)
+                }
 
-            view.findViewById<TextView>(R.id.descriptionTextView).text = it.description
+                binding.descriptionTextView.text = it.description
 
-            view.findViewById<RecyclerView>(R.id.comicsRecyclerView).apply {
-                adapter = ComicsAdapter(it.comics.items)
+                binding.comicsRecyclerView.apply {
+                    adapter = ComicsAdapter(it.comics.items)
+                }
             }
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = CharacterDetailFragment().apply {}
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
