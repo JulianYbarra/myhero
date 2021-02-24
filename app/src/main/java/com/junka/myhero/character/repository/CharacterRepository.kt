@@ -13,7 +13,7 @@ class CharacterRepository(
     fun checkRequireNewPage(lastVisible: Int) = flow {
         val offset = characterList.size
         if(lastVisible > offset - PAGE_THRESHOLD) {
-            val newList = characterService.getCharacters(PUBLIC_API_KEY, PRIVATE_API_KEY, TS, LIMIT_SIZE, offset).data.results
+            val newList = characterService.getCharacters(LIMIT_SIZE, offset).data.results
             characterList = characterList + newList
             emit(characterList)
         }
@@ -23,8 +23,5 @@ class CharacterRepository(
     companion object {
         private const val LIMIT_SIZE = 15
         private const val PAGE_THRESHOLD = 5
-        private const val PUBLIC_API_KEY = "3a783b25c80e1c44875356dd363f272d"
-        private const val PRIVATE_API_KEY = "51a3ecf2f92a23817992a2663183325e"
-        private const val TS = "1"
     }
 }
