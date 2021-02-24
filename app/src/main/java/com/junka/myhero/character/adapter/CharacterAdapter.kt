@@ -36,11 +36,9 @@ class CharacterAdapter(val onClickCharacter : (character: CharacterData) -> Unit
             nameTextView.text = item.name
             descriptionTextView.text = item.description
 
-            val imagePath = "${item.thumbnail.path}.${item.thumbnail.extension}"
-            imageView.load(imagePath){
+            imageView.load(item.thumbnail.getUrl()){
                 crossfade(true)
             }
-
         }
     }
 }

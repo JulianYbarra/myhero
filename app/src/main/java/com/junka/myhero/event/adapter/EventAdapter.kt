@@ -1,10 +1,7 @@
 package com.junka.myhero.event.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.junka.myhero.R
@@ -29,9 +26,7 @@ class EventAdapter(
 
 
         fun bind(event : EventData) = with(binding){
-
-            val imagePath = "${event.thumbnail.path}.${event.thumbnail.extension}"
-            imageView.load(imagePath)
+            imageView.load(event.thumbnail.getUrl())
 
             titleTextView.text = event.title
             startDateTextView.text = event.start.toDateFormat()

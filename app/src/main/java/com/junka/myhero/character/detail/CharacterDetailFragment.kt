@@ -47,8 +47,7 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
                     text = it.name
                 }
 
-                val imagePath = "${it.thumbnail.path}.${it.thumbnail.extension}"
-                binding.imageView.load(imagePath){
+                binding.imageView.load(it.thumbnail.getUrl()){
                     crossfade(true)
                 }
 

@@ -11,6 +11,7 @@ class CharacterViewModel(
     private val characterRepository: CharacterRepository
 ) : ViewModel(){
 
+    val characterList = MutableLiveData<List<CharacterData>>()
     val lastVisible = MutableStateFlow(0)
 
     init {
@@ -20,8 +21,6 @@ class CharacterViewModel(
             }
         }
     }
-
-    val characterList = MutableLiveData<List<CharacterData>>()
 
     private suspend fun notifyLastVisible(lastVisible: Int) {
         characterRepository.checkRequireNewPage(lastVisible).collect {

@@ -8,4 +8,10 @@ import kotlinx.parcelize.Parcelize
 data class ThumbnailData(
     @Json(name = "path") val path: String,
     @Json(name = "extension") val extension : String
-) : Parcelable
+) : Parcelable{
+
+    fun getUrl() : String {
+        return "$path.$extension"
+    }
+
+}
