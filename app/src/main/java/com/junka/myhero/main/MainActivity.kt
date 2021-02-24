@@ -32,8 +32,13 @@ class MainActivity : AppCompatActivity() {
 
         if(user == null){
             tryLogin()
+        }else {
+            AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener {
+                    // ...
+                }
         }
-
     }
 
     private fun setUpNavigation() {
@@ -73,15 +78,10 @@ class MainActivity : AppCompatActivity() {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .setLogo(R.drawable.ic_superhero) // Set logo drawable
-                .setTheme(R.style.Theme_MyHero) // Set theme
                 .build(),
             RC_SIGN_IN
         )
     }
 
-//    AuthUI.getInstance()
-//    .signOut(this)
-//    .addOnCompleteListener {
-//        // ...
-//    }
+//
 }
